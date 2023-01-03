@@ -16,7 +16,7 @@ router.get("/signup", async (req, res) => {
   }
 });
 
-router.post("/signin", async (res, req) => {
+router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -51,11 +51,11 @@ router.post("/signin", async (res, req) => {
       { new: true }
     );
 
-    res.cookie("token", refreshToken, {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-    });
+    // res.cookie("token", refreshToken, {
+    //   httpOnly: true,
+    //   sameSite: "none",
+    //   secure: true,
+    // });
     res.status(200).json({ user, accessToken });
   } catch (error) {
     console.log(error);
@@ -106,12 +106,12 @@ router.post("/signup", async (req, res) => {
       refreshToken: refreshToken,
     });
 
-    res.cookie("token", refreshToken, {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-    });
-    res.status(200).json({ user, accessToken });
+    // res.cookie("token", refreshToken, {
+    //   httpOnly: true,
+    //   sameSite: "none",
+    //   secure: true,
+    // });
+    // res.status(200).json({ user, accessToken });
 
     res.status(200).json({ user, accessToken });
   } catch (error) {
